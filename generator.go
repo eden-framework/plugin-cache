@@ -26,7 +26,7 @@ var CacheConfig = struct {
 	Cache *{{ .UseWithoutAlias "github.com/eden-framework/plugin-cache/cache" "" }}.Cache
 }{
 	Cache: &{{ .UseWithoutAlias "github.com/eden-framework/plugin-cache/cache" "" }}.Cache{
-		Driver: {{ .UseWithoutAlias "github.com/eden-framework/plugin-cache/cache" "" }}.DRIVER__REDIS,
+		Driver: {{ .UseWithoutAlias "github.com/eden-framework/plugin-cache/cache" "" }}.CACHE_DRIVER__REDIS,
 		Host:   "localhost",
 		Port:   6379,
 	},

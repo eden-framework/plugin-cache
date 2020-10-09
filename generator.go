@@ -20,7 +20,7 @@ func (g *GenerationPlugin) GenerateEntryPoint(opt plugins.Option, cwd string) st
 }
 
 func (g *GenerationPlugin) GenerateFilePoint(opt plugins.Option, cwd string) []*plugins.FileTemplate {
-	file := plugins.NewFileTemplate("global", path.Join(cwd, "internal/global/queue.go"))
+	file := plugins.NewFileTemplate("global", path.Join(cwd, "internal/global/cache.go"))
 	file.WithBlock(`
 var CacheConfig = struct {
 	Cache *{{ .UseWithoutAlias "github.com/eden-framework/plugin-cache/cache" "" }}.Cache

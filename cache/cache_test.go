@@ -18,7 +18,7 @@ func (t testStruct) MarshalBinary() (data []byte, err error) {
 
 func TestSetAndGetWithRedis(t *testing.T) {
 	c := &Cache{
-		Driver: DRIVER__REDIS,
+		Driver: CACHE_DRIVER__REDIS,
 		Host:   "localhost",
 	}
 	c.Init()
@@ -44,7 +44,7 @@ func TestSetAndGetWithRedis(t *testing.T) {
 
 func TestSetAndGetWithBuildin(t *testing.T) {
 	c := &Cache{
-		Driver: DRIVER__BUILDIN,
+		Driver: CACHE_DRIVER__BUILDIN,
 	}
 	c.Init()
 

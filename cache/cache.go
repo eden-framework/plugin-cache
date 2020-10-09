@@ -6,7 +6,7 @@ import (
 )
 
 type Cache struct {
-	Driver Driver
+	Driver CacheDriver
 	// Host for driver except buildin
 	Host string
 	// Port for driver except buildin
@@ -19,10 +19,10 @@ type Cache struct {
 }
 
 func (c *Cache) SetDefaults() {
-	if c.Driver == DRIVER_UNKNOWN {
-		c.Driver = DRIVER__BUILDIN
+	if c.Driver == CACHE_DRIVER_UNKNOWN {
+		c.Driver = CACHE_DRIVER__BUILDIN
 	}
-	if c.Driver == DRIVER__REDIS || c.Driver == DRIVER__MEMCACHED || c.Driver == DRIVER__MONGO {
+	if c.Driver == CACHE_DRIVER__REDIS || c.Driver == CACHE_DRIVER__MEMCACHED || c.Driver == CACHE_DRIVER__MONGO {
 		if c.Host == "" {
 			panic("[Cache] must specify Host and Port when use REDIS or MEMCACHED or MONGO drivers")
 		}
@@ -31,9 +31,9 @@ func (c *Cache) SetDefaults() {
 
 func (c *Cache) Init() {
 	switch c.Driver {
-	case DRIVER__BUILDIN:
+	case CACHE_DRIVER__BUILDIN:
 		c.cacheDriver = newMemoryCache()
-	case DRIVER__REDIS:
+	case CACHE_DRIVER__REDIS:
 		driver := &redis.Redis{
 			Host:     c.Host,
 			Port:     c.Port,
@@ -42,8 +42,8 @@ func (c *Cache) Init() {
 		}
 		driver.Init()
 		c.cacheDriver = driver
-	case DRIVER__MEMCACHED:
-	case DRIVER__MONGO:
+	case CACHE_DRIVER__MEMCACHED:
+	case CACHE_DRIVER__MONGO:
 	default:
 		panic("[Cache] unsupported driver")
 	}

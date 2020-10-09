@@ -6,17 +6,17 @@ import (
 	"time"
 )
 
-//go:generate eden generate enum --type-name=Driver
+//go:generate eden generate enum --type-name=CacheDriver
 // api:enum
-type Driver uint8
+type CacheDriver uint8
 
 // cache driver type
 const (
-	DRIVER_UNKNOWN    Driver = iota
-	DRIVER__BUILDIN          // buildin
-	DRIVER__MEMCACHED        // memcached
-	DRIVER__REDIS            // redis
-	DRIVER__MONGO            // mongo for object cache
+	CACHE_DRIVER_UNKNOWN    CacheDriver = iota
+	CACHE_DRIVER__BUILDIN               // buildin
+	CACHE_DRIVER__MEMCACHED             // memcached
+	CACHE_DRIVER__REDIS                 // redis
+	CACHE_DRIVER__MONGO                 // mongo for object cache
 )
 
 type cacheDriver interface {
